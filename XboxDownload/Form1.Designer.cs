@@ -990,12 +990,12 @@ namespace XboxDownload
             // 
             this.linkImportIPXbox.AutoSize = true;
             this.linkImportIPXbox.LinkColor = System.Drawing.Color.Red;
-            this.linkImportIPXbox.Location = new System.Drawing.Point(958, 12);
+            this.linkImportIPXbox.Location = new System.Drawing.Point(862, 12);
             this.linkImportIPXbox.Name = "linkImportIPXbox";
-            this.linkImportIPXbox.Size = new System.Drawing.Size(152, 18);
+            this.linkImportIPXbox.Size = new System.Drawing.Size(251, 18);
             this.linkImportIPXbox.TabIndex = 7;
             this.linkImportIPXbox.TabStop = true;
-            this.linkImportIPXbox.Text = "在线导入IP(Xbox)";
+            this.linkImportIPXbox.Text = "在线导入IP(Xbox && 微软商店)";
             this.linkImportIPXbox.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkImportIP_LinkClicked);
             // 
             // linkTestUrl3
@@ -1027,7 +1027,7 @@ namespace XboxDownload
             // linkExportIP
             // 
             this.linkExportIP.AutoSize = true;
-            this.linkExportIP.Location = new System.Drawing.Point(854, 12);
+            this.linkExportIP.Location = new System.Drawing.Point(758, 12);
             this.linkExportIP.Name = "linkExportIP";
             this.linkExportIP.Size = new System.Drawing.Size(98, 18);
             this.linkExportIP.TabIndex = 6;
@@ -1974,7 +1974,7 @@ namespace XboxDownload
             this.groupBox7.Size = new System.Drawing.Size(1464, 144);
             this.groupBox7.TabIndex = 0;
             this.groupBox7.TabStop = false;
-            this.groupBox7.Text = "下载链接生成器 (Xbox && Win10 微软商店)";
+            this.groupBox7.Text = "下载链接生成器 (Xbox && 微软商店)";
             // 
             // flpGameWithGold
             // 
