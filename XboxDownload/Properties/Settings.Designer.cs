@@ -73,6 +73,18 @@ namespace XboxDownload.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string EAIP {
+            get {
+                return ((string)(this["EAIP"]));
+            }
+            set {
+                this["EAIP"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool Redirect {
             get {
@@ -188,18 +200,6 @@ namespace XboxDownload.Properties {
             }
             set {
                 this["NextUpdate"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string EaIP {
-            get {
-                return ((string)(this["EaIP"]));
-            }
-            set {
-                this["EaIP"] = value;
             }
         }
     }

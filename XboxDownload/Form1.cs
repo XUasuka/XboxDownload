@@ -1,4 +1,5 @@
-﻿using NetFwTypeLib;
+﻿using Microsoft.Win32;
+using NetFwTypeLib;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -62,7 +63,7 @@ namespace XboxDownload
             tbComIP.Text = Properties.Settings.Default.ComIP;
             tbCnIP.Text = Properties.Settings.Default.CnIP;
             tbAppIP.Text = Properties.Settings.Default.AppIP;
-            tbEaIP.Text = Properties.Settings.Default.EaIP;
+            tbEAIP.Text = Properties.Settings.Default.EAIP;
             ckbRedirect.Checked = Properties.Settings.Default.Redirect;
             ckbTruncation.Checked = Properties.Settings.Default.Truncation;
             ckbLocalUpload.Checked = Properties.Settings.Default.LocalUpload;
@@ -312,6 +313,7 @@ namespace XboxDownload
                     if (cbAppxDrive.Items.Count == 0)
                     {
                         LinkAppxRefreshDrive_LinkClicked(null, null);
+                        GetEACdn();
                     }
                     break;
             }
@@ -340,10 +342,10 @@ namespace XboxDownload
                 if (string.IsNullOrEmpty(Properties.Settings.Default.ComIP)) tbComIP.Clear();
                 if (string.IsNullOrEmpty(Properties.Settings.Default.CnIP)) tbCnIP.Clear();
                 if (string.IsNullOrEmpty(Properties.Settings.Default.AppIP)) tbAppIP.Clear();
-                if (string.IsNullOrEmpty(Properties.Settings.Default.EaIP)) tbEaIP.Clear();
+                if (string.IsNullOrEmpty(Properties.Settings.Default.EAIP)) tbEAIP.Clear();
                 pictureBox1.Image = Properties.Resources.Xbox1;
                 butStart.Text = "开始监听";
-                tbDnsIP.Enabled = tbComIP.Enabled = tbCnIP.Enabled = tbAppIP.Enabled = tbEaIP.Enabled = ckbRedirect.Enabled = ckbTruncation.Enabled = ckbLocalUpload.Enabled = tbLocalPath.Enabled = butBrowse.Enabled = cbListenIP.Enabled = ckbDnsService.Enabled = ckbHttpService.Enabled =  ckbMicrosoftStore.Enabled = cbLocalIP.Enabled = true;
+                tbDnsIP.Enabled = tbComIP.Enabled = tbCnIP.Enabled = tbAppIP.Enabled = tbEAIP.Enabled = ckbRedirect.Enabled = ckbTruncation.Enabled = ckbLocalUpload.Enabled = tbLocalPath.Enabled = butBrowse.Enabled = cbListenIP.Enabled = ckbDnsService.Enabled = ckbHttpService.Enabled =  ckbMicrosoftStore.Enabled = cbLocalIP.Enabled = true;
                 if (Properties.Settings.Default.MicrosoftStore) ModifyHostsFile(false);
                 linkTestDns.Enabled = false;
                 dnsListen.Close();
@@ -439,16 +441,16 @@ namespace XboxDownload
                     }
                 }
                 string eaIP = string.Empty;
-                if (!string.IsNullOrEmpty(tbEaIP.Text.Trim()))
+                if (!string.IsNullOrEmpty(tbEAIP.Text.Trim()))
                 {
-                    if (IPAddress.TryParse(tbEaIP.Text, out IPAddress ipAddress))
+                    if (IPAddress.TryParse(tbEAIP.Text, out IPAddress ipAddress))
                     {
                         eaIP = ipAddress.ToString();
                     }
                     else
                     {
                         MessageBox.Show("指定 EA 下载域名 IP 不正确", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        tbEaIP.Focus();
+                        tbEAIP.Focus();
                         return;
                     }
                 }
@@ -456,7 +458,7 @@ namespace XboxDownload
                 Properties.Settings.Default.ComIP = comIP;
                 Properties.Settings.Default.CnIP = cnIP;
                 Properties.Settings.Default.AppIP = appIP;
-                Properties.Settings.Default.EaIP = eaIP;
+                Properties.Settings.Default.EAIP = eaIP;
                 Properties.Settings.Default.Redirect = ckbRedirect.Checked;
                 Properties.Settings.Default.Truncation = ckbTruncation.Checked;
                 Properties.Settings.Default.LocalUpload = ckbLocalUpload.Checked;
@@ -596,7 +598,7 @@ namespace XboxDownload
 
                 bServiceFlag = true;
                 pictureBox1.Image = Properties.Resources.Xbox2;
-                tbDnsIP.Enabled = tbComIP.Enabled = tbCnIP.Enabled = tbAppIP.Enabled = tbEaIP.Enabled = ckbRedirect.Enabled = ckbTruncation.Enabled = ckbLocalUpload.Enabled = tbLocalPath.Enabled = butBrowse.Enabled = cbListenIP.Enabled = ckbDnsService.Enabled = ckbHttpService.Enabled = ckbMicrosoftStore.Enabled = cbLocalIP.Enabled = false;
+                tbDnsIP.Enabled = tbComIP.Enabled = tbCnIP.Enabled = tbAppIP.Enabled = tbEAIP.Enabled = ckbRedirect.Enabled = ckbTruncation.Enabled = ckbLocalUpload.Enabled = tbLocalPath.Enabled = butBrowse.Enabled = cbListenIP.Enabled = ckbDnsService.Enabled = ckbHttpService.Enabled = ckbMicrosoftStore.Enabled = cbLocalIP.Enabled = false;
                 butStart.Text = "停止监听";
                 Program.SystemSleep.PreventForCurrentThread(false);
 
@@ -680,9 +682,9 @@ namespace XboxDownload
                         sb.AppendLine(Properties.Settings.Default.AppIP + " dl.delivery.mp.microsoft.com");
                         sb.AppendLine(Properties.Settings.Default.AppIP + " tlu.dl.delivery.mp.microsoft.com");
                     }
-                    if (!string.IsNullOrEmpty(Properties.Settings.Default.EaIP))
+                    if (!string.IsNullOrEmpty(Properties.Settings.Default.EAIP))
                     {
-                        sb.AppendLine(Properties.Settings.Default.EaIP + " origin-a.akamaihd.net");
+                        sb.AppendLine(Properties.Settings.Default.EAIP + " origin-a.akamaihd.net");
                     }
                     foreach (var domain in dicDomain)
                     {
@@ -833,9 +835,9 @@ namespace XboxDownload
             }
             if (dgvIpList.SelectedRows.Count != 1) return;
             DataGridViewRow dgvr = dgvIpList.SelectedRows[0];
-            tbEaIP.Text = dgvr.Cells["Col_IP"].Value.ToString();
+            tbEAIP.Text = dgvr.Cells["Col_IP"].Value.ToString();
             tabControl1.SelectedIndex = 0;
-            tbEaIP.Focus();
+            tbEAIP.Focus();
         }
 
         private void DgvIpList_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -956,6 +958,7 @@ namespace XboxDownload
             if (dt != null && dt.Rows.Count >= 1)
             {
                 dgvIpList.Rows.Clear();
+                tbDlUrl.Clear();
                 dgvIpList.Tag = host;
                 bool telecom1 = ckbTelecom1.Checked;
                 bool telecom2 = ckbTelecom2.Checked;
@@ -2388,6 +2391,65 @@ namespace XboxDownload
             }
             tbAppxFilePath.Clear();
         }
+
+        private void GetEACdn()
+        {
+            string EACorePath = string.Empty;
+            RegistryKey rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Origin");
+            if (rk != null)
+            {
+                EACorePath = rk.GetValue("InstallLocation", null) + "\\EACore.ini";
+            }
+            else
+            {
+                rk = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\Origin");
+                if (rk != null) EACorePath = rk.GetValue("InstallLocation", null) + "\\EACore.ini";
+            }
+            if (string.IsNullOrEmpty(EACorePath))
+            {
+                labelStatusEACdn.Text += "没有安装 Origin";
+                return;
+            }
+            gpEACdn.Tag = EACorePath;
+            string str = string.Empty;
+            using (StreamReader sw = new StreamReader(EACorePath))
+            {
+                str = sw.ReadToEnd();
+            }
+            Match result = Regex.Match(str, @"CdnOverride=(.+)");
+            if (result.Success)
+                labelStatusEACdn.Text += Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(result.Groups[1].Value);
+            else
+                labelStatusEACdn.Text += "自动";
+        }
+
+        private void ButEACdn_Click(object sender, EventArgs e)
+        {
+            if (gpEACdn.Tag == null)
+            {
+                MessageBox.Show("没有安装 Origin", "提示", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                return;
+            }
+            string cdn = string.Empty;
+            if (rbEACdn1.Checked)
+            {
+                cdn = "[connection]\r\nEnvironmentName=production\r\n\r\n[Feature]\r\nCdnOverride=akamai";
+                labelStatusEACdn.Text = "当前使用CDN：Akamai";
+            }
+            else if (rbEACdn2.Checked)
+            {
+                cdn = "[connection]\r\nEnvironmentName=production\r\n\r\n[Feature]\r\nCdnOverride=level3";
+                labelStatusEACdn.Text = "当前使用CDN：Level3";
+            }
+            else
+            {
+                labelStatusEACdn.Text = "当前使用CDN：自动";
+            }
+            using (StreamWriter sw = new StreamWriter(gpEACdn.Tag.ToString(), false))
+            {
+                sw.Write(cdn);
+            }
+        }
         #endregion
 
         private void Dgv_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
@@ -2423,6 +2485,7 @@ namespace XboxDownload
                 lvLog.Items.Insert(0, listViewItem);
             }
         }
+
 
         class ListViewNF : ListView
         {

@@ -14,7 +14,7 @@
     <Setting Name="AppIP" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="EaIP" Type="System.String" Scope="User">
+    <Setting Name="EAIP" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
     <Setting Name="Redirect" Type="System.Boolean" Scope="User">

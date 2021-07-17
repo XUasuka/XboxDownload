@@ -64,7 +64,7 @@ namespace XboxDownload
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label52 = new System.Windows.Forms.Label();
-            this.tbEaIP = new System.Windows.Forms.TextBox();
+            this.tbEAIP = new System.Windows.Forms.TextBox();
             this.labelEA = new System.Windows.Forms.Label();
             this.ckbMicrosoftStore = new System.Windows.Forms.CheckBox();
             this.cbListenIP = new System.Windows.Forms.ComboBox();
@@ -237,6 +237,13 @@ namespace XboxDownload
             this.contextMenuStrip2 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tsmCopyUrl1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmCopyUrl2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gpEACdn = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.butEACdn = new System.Windows.Forms.Button();
+            this.labelStatusEACdn = new System.Windows.Forms.Label();
+            this.rbEACdn3 = new System.Windows.Forms.RadioButton();
+            this.rbEACdn2 = new System.Windows.Forms.RadioButton();
+            this.rbEACdn1 = new System.Windows.Forms.RadioButton();
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -267,6 +274,7 @@ namespace XboxDownload
             this.gbDrive.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
             this.contextMenuStrip2.SuspendLayout();
+            this.gpEACdn.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -551,7 +559,7 @@ namespace XboxDownload
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label52);
-            this.groupBox1.Controls.Add(this.tbEaIP);
+            this.groupBox1.Controls.Add(this.tbEAIP);
             this.groupBox1.Controls.Add(this.labelEA);
             this.groupBox1.Controls.Add(this.ckbMicrosoftStore);
             this.groupBox1.Controls.Add(this.cbListenIP);
@@ -596,12 +604,12 @@ namespace XboxDownload
             this.label52.TabIndex = 113;
             this.label52.Text = "留空使用DNS服务器查询 (PC EA Desktop && Origin，需要勾选加速微软商店 && EA)";
             // 
-            // tbEaIP
+            // tbEAIP
             // 
-            this.tbEaIP.Location = new System.Drawing.Point(320, 152);
-            this.tbEaIP.Name = "tbEaIP";
-            this.tbEaIP.Size = new System.Drawing.Size(188, 28);
-            this.tbEaIP.TabIndex = 5;
+            this.tbEAIP.Location = new System.Drawing.Point(320, 152);
+            this.tbEAIP.Name = "tbEAIP";
+            this.tbEAIP.Size = new System.Drawing.Size(188, 28);
+            this.tbEAIP.TabIndex = 5;
             // 
             // labelEA
             // 
@@ -615,7 +623,7 @@ namespace XboxDownload
             // ckbMicrosoftStore
             // 
             this.ckbMicrosoftStore.AutoSize = true;
-            this.ckbMicrosoftStore.Location = new System.Drawing.Point(1234, 112);
+            this.ckbMicrosoftStore.Location = new System.Drawing.Point(1230, 112);
             this.ckbMicrosoftStore.Name = "ckbMicrosoftStore";
             this.ckbMicrosoftStore.Size = new System.Drawing.Size(223, 22);
             this.ckbMicrosoftStore.TabIndex = 24;
@@ -629,7 +637,7 @@ namespace XboxDownload
             this.cbListenIP.Items.AddRange(new object[] {
             "本机IP",
             "(Any)"});
-            this.cbListenIP.Location = new System.Drawing.Point(1298, 16);
+            this.cbListenIP.Location = new System.Drawing.Point(1294, 16);
             this.cbListenIP.Name = "cbListenIP";
             this.cbListenIP.Size = new System.Drawing.Size(108, 26);
             this.cbListenIP.TabIndex = 21;
@@ -637,7 +645,7 @@ namespace XboxDownload
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(1231, 22);
+            this.label35.Location = new System.Drawing.Point(1227, 22);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(62, 18);
             this.label35.TabIndex = 109;
@@ -719,7 +727,7 @@ namespace XboxDownload
             // ckbDnsService
             // 
             this.ckbDnsService.AutoSize = true;
-            this.ckbDnsService.Location = new System.Drawing.Point(1234, 56);
+            this.ckbDnsService.Location = new System.Drawing.Point(1230, 56);
             this.ckbDnsService.Name = "ckbDnsService";
             this.ckbDnsService.Size = new System.Drawing.Size(160, 22);
             this.ckbDnsService.TabIndex = 22;
@@ -729,7 +737,7 @@ namespace XboxDownload
             // ckbHttpService
             // 
             this.ckbHttpService.AutoSize = true;
-            this.ckbHttpService.Location = new System.Drawing.Point(1234, 84);
+            this.ckbHttpService.Location = new System.Drawing.Point(1230, 84);
             this.ckbHttpService.Name = "ckbHttpService";
             this.ckbHttpService.Size = new System.Drawing.Size(160, 22);
             this.ckbHttpService.TabIndex = 23;
@@ -758,7 +766,7 @@ namespace XboxDownload
             // 
             // butStart
             // 
-            this.butStart.Location = new System.Drawing.Point(1234, 140);
+            this.butStart.Location = new System.Drawing.Point(1230, 140);
             this.butStart.Name = "butStart";
             this.butStart.Size = new System.Drawing.Size(172, 124);
             this.butStart.TabIndex = 100;
@@ -2083,6 +2091,7 @@ namespace XboxDownload
             // 
             // tabPage7
             // 
+            this.tabPage7.Controls.Add(this.gpEACdn);
             this.tabPage7.Controls.Add(this.groupBox8);
             this.tabPage7.Controls.Add(this.gbDrive);
             this.tabPage7.Location = new System.Drawing.Point(4, 28);
@@ -2244,9 +2253,9 @@ namespace XboxDownload
             this.labelStatusDrive.ForeColor = System.Drawing.Color.Red;
             this.labelStatusDrive.Location = new System.Drawing.Point(10, 117);
             this.labelStatusDrive.Name = "labelStatusDrive";
-            this.labelStatusDrive.Size = new System.Drawing.Size(224, 18);
+            this.labelStatusDrive.Size = new System.Drawing.Size(125, 18);
             this.labelStatusDrive.TabIndex = 11;
-            this.labelStatusDrive.Text = "当前U盘状态：没有找到U盘";
+            this.labelStatusDrive.Text = "当前U盘状态：";
             // 
             // rbXboxOne
             // 
@@ -2399,6 +2408,85 @@ namespace XboxDownload
             this.tsmCopyUrl2.Text = "复制(.com替换为.cn)";
             this.tsmCopyUrl2.Click += new System.EventHandler(this.TsmCopyUrl2_Click);
             // 
+            // gpEACdn
+            // 
+            this.gpEACdn.Controls.Add(this.label3);
+            this.gpEACdn.Controls.Add(this.butEACdn);
+            this.gpEACdn.Controls.Add(this.labelStatusEACdn);
+            this.gpEACdn.Controls.Add(this.rbEACdn3);
+            this.gpEACdn.Controls.Add(this.rbEACdn2);
+            this.gpEACdn.Controls.Add(this.rbEACdn1);
+            this.gpEACdn.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gpEACdn.Location = new System.Drawing.Point(0, 268);
+            this.gpEACdn.Name = "gpEACdn";
+            this.gpEACdn.Size = new System.Drawing.Size(1470, 114);
+            this.gpEACdn.TabIndex = 3;
+            this.gpEACdn.TabStop = false;
+            this.gpEACdn.Text = "EA Origin 切换CDN服务器";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(765, 24);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(242, 54);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "使用说明：\r\n1. 选择CDN服务器后按应用。\r\n2. 重启Origin生效。";
+            // 
+            // butEACdn
+            // 
+            this.butEACdn.Location = new System.Drawing.Point(423, 33);
+            this.butEACdn.Name = "butEACdn";
+            this.butEACdn.Size = new System.Drawing.Size(140, 30);
+            this.butEACdn.TabIndex = 13;
+            this.butEACdn.Text = "应用";
+            this.butEACdn.UseVisualStyleBackColor = true;
+            this.butEACdn.Click += new System.EventHandler(this.ButEACdn_Click);
+            // 
+            // labelStatusEACdn
+            // 
+            this.labelStatusEACdn.AutoSize = true;
+            this.labelStatusEACdn.ForeColor = System.Drawing.Color.Red;
+            this.labelStatusEACdn.Location = new System.Drawing.Point(10, 74);
+            this.labelStatusEACdn.Name = "labelStatusEACdn";
+            this.labelStatusEACdn.Size = new System.Drawing.Size(125, 18);
+            this.labelStatusEACdn.TabIndex = 12;
+            this.labelStatusEACdn.Text = "当前使用CDN：";
+            // 
+            // rbEACdn3
+            // 
+            this.rbEACdn3.AutoSize = true;
+            this.rbEACdn3.Location = new System.Drawing.Point(253, 37);
+            this.rbEACdn3.Name = "rbEACdn3";
+            this.rbEACdn3.Size = new System.Drawing.Size(69, 22);
+            this.rbEACdn3.TabIndex = 2;
+            this.rbEACdn3.TabStop = true;
+            this.rbEACdn3.Text = "自动";
+            this.rbEACdn3.UseVisualStyleBackColor = true;
+            // 
+            // rbEACdn2
+            // 
+            this.rbEACdn2.AutoSize = true;
+            this.rbEACdn2.Location = new System.Drawing.Point(160, 37);
+            this.rbEACdn2.Name = "rbEACdn2";
+            this.rbEACdn2.Size = new System.Drawing.Size(87, 22);
+            this.rbEACdn2.TabIndex = 1;
+            this.rbEACdn2.TabStop = true;
+            this.rbEACdn2.Text = "Level3";
+            this.rbEACdn2.UseVisualStyleBackColor = true;
+            // 
+            // rbEACdn1
+            // 
+            this.rbEACdn1.AutoSize = true;
+            this.rbEACdn1.Checked = true;
+            this.rbEACdn1.Location = new System.Drawing.Point(13, 37);
+            this.rbEACdn1.Name = "rbEACdn1";
+            this.rbEACdn1.Size = new System.Drawing.Size(141, 22);
+            this.rbEACdn1.TabIndex = 0;
+            this.rbEACdn1.TabStop = true;
+            this.rbEACdn1.Text = "Akamai(推荐)";
+            this.rbEACdn1.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
@@ -2454,6 +2542,8 @@ namespace XboxDownload
             this.gbDrive.PerformLayout();
             this.contextMenuStrip1.ResumeLayout(false);
             this.contextMenuStrip2.ResumeLayout(false);
+            this.gpEACdn.ResumeLayout(false);
+            this.gpEACdn.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2658,11 +2748,18 @@ namespace XboxDownload
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_IPv4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Col_Remark;
         private System.Windows.Forms.DataGridView dgvHosts;
-        public System.Windows.Forms.TextBox tbEaIP;
+        public System.Windows.Forms.TextBox tbEAIP;
         private System.Windows.Forms.Label labelEA;
         private System.Windows.Forms.Label label52;
         private System.Windows.Forms.LinkLabel linkImportIPEA;
         private System.Windows.Forms.ToolStripMenuItem tsmUseIP4;
+        private System.Windows.Forms.GroupBox gpEACdn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button butEACdn;
+        private System.Windows.Forms.Label labelStatusEACdn;
+        private System.Windows.Forms.RadioButton rbEACdn3;
+        private System.Windows.Forms.RadioButton rbEACdn2;
+        private System.Windows.Forms.RadioButton rbEACdn1;
     }
 }
 

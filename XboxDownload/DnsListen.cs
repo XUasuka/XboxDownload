@@ -122,9 +122,9 @@ namespace XboxDownload
                 }
             }
             Byte[] eaIP = null;
-            if (!string.IsNullOrEmpty(Properties.Settings.Default.EaIP))
+            if (!string.IsNullOrEmpty(Properties.Settings.Default.EAIP))
             {
-                string[] ips = Properties.Settings.Default.EaIP.Split('.');
+                string[] ips = Properties.Settings.Default.EAIP.Split('.');
                 eaIP = new byte[4] { byte.Parse(ips[0]), byte.Parse(ips[1]), byte.Parse(ips[2]), byte.Parse(ips[3]) };
             }
             else
@@ -132,7 +132,7 @@ namespace XboxDownload
                 string ip = ClassWeb.HostToIP("origin-a.akamaihd.net", Properties.Settings.Default.DnsIP);
                 if (!string.IsNullOrEmpty(ip))
                 {
-                    parentForm.SetTextBox(parentForm.tbEaIP, ip);
+                    parentForm.SetTextBox(parentForm.tbEAIP, ip);
                     string[] ips = ip.Split('.');
                     eaIP = new byte[4] { byte.Parse(ips[0]), byte.Parse(ips[1]), byte.Parse(ips[2]), byte.Parse(ips[3]) };
                 }
